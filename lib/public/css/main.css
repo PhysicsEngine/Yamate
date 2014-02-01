@@ -1,0 +1,19 @@
+#count-button {
+  width: 100px;
+}
+
+.message {
+  color: orange;
+}
+
+.user-id {
+  color: green;
+}
+
+#user-counter {
+  border: none;
+  color: #FC0;
+  font-size: 16pt;
+  width: 50px;
+  text-align: right;
+}
