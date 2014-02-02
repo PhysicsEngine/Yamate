@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Subway</title>
+	<meta charset="UTF-8">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.subwayMap-0.5.0.js"></script>
+	   <style type="text/css">
+
+    body
+    {
+        font-family: Verdana;
+        font-size: 8pt;
+    }
+
+    /* The main DIV for the map */
+
+    .subway-map
+    {
+        margin: 0;
+        width: 500px;
+        height:700px;
+        background-color: white;
+    }
+
+
+    /* Text labels */
+    .text
+    {
+        text-decoration: none;
+        color: black;
+    }
+
+
+    #legend
+    {
+        float: left;
+        width: 250px;
+        height:400px;
+    }
+
+
+    #legend div
+    {
+        height: 25px;
+    }
+
+
+    #legend span
+    {
+        margin: 5px 5px 5px 0;
+    }
+
+    .subway-map span
+    {
+        margin: 5px 5px 5px 0;
+    }
+
+    </style>
+
+	
+  </head>
+  <body>
+	<h1>subway</h1>
+<div class="subway-map" data-columns="17" data-rows="17" data-cellSize="40" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="true" data-lineWidth="8">
+
+<ul data-color="#00ff00" data-label="Yamate">
+ <li data-coords="2.5,1"  data-marker="interchange">池袋</li>
+ <li data-coords="4,1">大塚</li>
+ <li data-coords="6,1">巣鴨</li>
+ <li data-coords="8,1">駒込</li>
+ <li data-coords="10,1">田端</li>
+ <li data-coords="12,1">西日暮里</li>
+ <li data-coords="14,1">日暮里</li>
+ <li data-coords="15,1"></li>
+ <li data-coords="16,2" data-dir="E"></li>
+ <li data-coords="16,3">鶯谷</li>
+ <li data-coords="16,5" data-marker="interchange">上野</li>
+ <li data-coords="16,7">御徒町</li>
+ <li data-coords="16,9">秋葉原</li>
+ <li data-coords="16,11">神田</li>
+ <li data-coords="16,13" data-marker="interchange">東京</li>
+ <li data-coords="16,15">有楽町</li>
+ <li data-coords="15,16" data-dir="S"></li>
+ <li data-coords="14,16">新橋</li>
+ <li data-coords="12,16">浜松町</li>
+ <li data-coords="10,16">田町</li>
+ <li data-coords="8,16">品川</li>
+ <li data-coords="6,16">大崎</li>
+ <li data-coords="4,16">五反田</li>
+ <li data-coords="2,16">目黒</li>
+ <li data-coords="1,15" data-dir="W">恵比寿</li>
+ <li data-coords="1,13" data-marker="interchange">渋谷</li>
+ <li data-coords="1,11">原宿</li>
+ <li data-coords="1,9" data-dir="W">代々木</li>
+ <li data-coords="1,7" data-marker="interchange">新宿</li>
+ <li data-coords="1,5">新大久保</li>
+ <li data-coords="1,3">高田馬場</li>
+ <li data-coords="1,2">目白</li>
+ <li data-coords="2,1" data-dir="N"></li>
+ <li data-coords="2.5,1"></li>
+</ul>
+
+    </div>
+
+    <div id="legend"></div>
+<script type="text/javascript">
+$(".subway-map").subwayMap({ debug: true });
+</script>
+  </body>
+</html>
