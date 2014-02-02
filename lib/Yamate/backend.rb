@@ -17,7 +17,7 @@ module Yamate
                            { :id => 3, :latitude => 32.19283, :longitude => 32.129182 }
                            ] };
       puts data.to_json
-      sleep 1
+      sleep 2
       @clients.each do |client|
         client.send(data.to_json)
       end
