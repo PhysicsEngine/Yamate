@@ -27,15 +27,15 @@ module Yamate
     end
 
     def update()
-      if self.which_quadrant() == 0 then
+      if self.which_quadrant == 0 then
         @x = @@radius
         @y = @@radius * Math.tan(@theta)
-      elsif self.which_quadrant() == 1 then
+      elsif self.which_quadrant == 1 then
         @x = @@radius / Math.tan(@theta)
         @y = @@radius
-      elsif self.which_quadrant() == 2 then
+      elsif self.which_quadrant == 2 then
         @x = -@@radius
-        @y = -@@radius * Math.tan(theta)
+        @y = -@@radius * Math.tan(@theta)
       else
         @x = -@@radius / Math.tan(@theta)
         @y = -@@radius
@@ -45,8 +45,6 @@ module Yamate
     def move()
       @theta += 0.04
       self.update()
-      #@x = @@radius * Math.cos(@theta)
-      #@y = @@radius * Math.sin(@theta)
     end
 
     def get_position()
@@ -63,7 +61,7 @@ module Yamate
       rand_theta = Random.new()
       for i in 0..10 do
         init_theta = rand_theta.rand
-        @trains.push(Train.new(i, init_theta))
+        @trains.push(Train.new(i, init_theta*6.28))
       end
     end
 
