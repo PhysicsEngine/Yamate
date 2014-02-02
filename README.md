@@ -14,6 +14,11 @@ $ rbenv install 2.0.0-p195
 ```
 $ gem install sinatra_websocket_template
 ```
+4. 依存を解決する
+```
+$ gem install bundler
+$ bundle
+```
 
 ## How to up server
 
