@@ -939,10 +939,10 @@
 		background: #f08c89;
 		background-image: url('images/header.svg');
 		background-image: url('images/header.svg'), -moz-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
-		background-image: url('images/header.svg'), -webkit-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
+		background-image: url('images/header.svg'), -webkit-linear-gradient(75deg, #008000 15%, #99CC00 55%);
 		background-image: url('images/header.svg'), -o-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
 		background-image: url('images/header.svg'), -ms-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
-		background-image: url('images/header.svg'), linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
+		background-image: url('images/header.svg'), linear-gradient(75deg, #008000 15%, #99CC00 55%);
 	}
 	
 		#header-wrapper:before
@@ -1042,7 +1042,7 @@
 		{
 			background: #fff;
 			border-color: rgba(255,255,255,0);
-			color: #f08c89;
+			color: #13852A;
 		}
 
 			#hero .button:hover
