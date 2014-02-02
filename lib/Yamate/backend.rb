@@ -2,20 +2,51 @@ require 'faye/websocket'
 require 'json'
 
 module Yamate
+  class Train
+    @@radius = 1
+    
+    def initialize(id, theta)
+      @id    = id
+      @x     = 0
+      @y     = 0
+      @theta = theta
+    end
+
+    def move()
+      @theta += 0.01
+      @x = @@radius * Math.cos(@theta)
+      @y = @@radius * Math.sin(@theta)
+    end
+
+    def get_position()
+      position = {:id => @id, :x => @x, :y => @y }
+      return position.to_json
+    end
+  end
+  
   class Backend
     KEEPALIVE_TIME = 15
     def initialize(app)
       @app = app
       @clients = []
+      @trains  = []
+      init_theta = Random.new()
+      for i in 0..10 do
+        @trains.push(Train.new(i, init_theta.rand))
+      end
     end
 
     def routine()
-      puts "*************** SEND DATA ********************"
-      data = { :trains => [
-                           { :id => 1, :latitude => 32.12711, :longitude => 42.191282 },
-                           { :id => 2, :latitude => 32.19271, :longitude => 42.123121 },
-                           { :id => 3, :latitude => 32.19283, :longitude => 32.129182 }
-                           ] };
+      @trains.each do |train| 
+        train.move
+      end
+
+      data = {}
+      data[:trains] = []
+      @trains.each do |train|
+        data[:trains].push(train.get_position)
+      end
+      
       puts data.to_json
       sleep 2
       @clients.each do |client|
