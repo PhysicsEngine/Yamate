@@ -19,8 +19,7 @@ module Yamate
     end
 
     def get_position()
-      position = {:id => @id, :x => @x, :y => @y }
-      return position.to_json
+      return {:id => @id, :x => @x, :y => @y }
     end
   end
   
