@@ -10,6 +10,10 @@ Realtime yamanote line web application for AppCon held by Ministery of Internal 
 ```
 $ rbenv install 2.0.0-p195
 ```
+3. rbenvのバージョンを変更
+```
+$ rbenv global 2.0.0-p195
+```
 3. sinatra_websocket_template (0.0.1)を入れる
 ```
 $ gem install sinatra_websocket_template
