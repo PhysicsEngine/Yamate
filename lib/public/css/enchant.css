@@ -1,3 +1,12 @@
+#hero {
+  width: 680px;
+  height: 680px;
+}
+
+#hero canvas {
+  left: 0px;
+}
+
 #enchant-canvas {
   width: 680px;
   height: 680px;
@@ -6,13 +15,14 @@
 
 #enchant-stage {
   position: absolute;
+  z-index: 1003;
 }
 
 .subway-map
 {
     margin: 0;
-    width: 700px;
-    height:700px;
+    width: 680px;
+    height:680px;
     background-color: white;
     position: absolute;
 }
