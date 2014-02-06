@@ -1,4 +1,58 @@
+#hero {
+  width: 680px;
+  height: 680px;
+}
+
+#hero canvas {
+  left: 0px;
+}
+
 #enchant-canvas {
-  width: 320px;
+  width: 680px;
+  height: 680px;
   margin: 0 auto 0 auto;
 }
+
+#enchant-stage {
+  position: absolute;
+  z-index: 3003;
+}
+
+.subway-map
+{
+    margin: 0;
+    width: 680px;
+    height:680px;
+    background-color: white;
+    position: absolute;
+}
+
+/* Text labels */
+.text
+{   
+    text-decoration: none;
+    color: black;
+}
+
+#legend
+{   
+    float: left;
+    width: 250px;
+    height:400px;
+}
+
+#legend div
+{   
+    height: 25px;
+}
+
+#legend span
+{   
+    margin: 5px 5px 5px 0;
+}
+
+.subway-map span
+{
+    margin: 5px 5px 5px 0;
+}
+
