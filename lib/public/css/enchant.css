@@ -15,7 +15,7 @@
 
 #enchant-stage {
   position: absolute;
-  z-index: 1003;
+  z-index: 3003;
 }
 
 .subway-map
@@ -55,3 +55,4 @@
 {
     margin: 5px 5px 5px 0;
 }
+
