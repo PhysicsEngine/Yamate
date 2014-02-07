@@ -1,5 +1,7 @@
 require 'faye/websocket'
 require 'json'
+require 'Yamate'
+require 'yaml'
 
 module Yamate
 
@@ -54,6 +56,8 @@ module Yamate
   
   class Backend
     KEEPALIVE_TIME = 15
+
+    
     def initialize(app)
       @app = app
       @clients = []
@@ -63,9 +67,19 @@ module Yamate
         init_theta = rand_theta.rand
         @trains.push(Train.new(i, init_theta*6.28))
       end
+      yamate_config = YAML.load_file('./conf/config.yml')
+      
+      @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
     end
 
+    def update_train_data()
+      ret = @api_client.get_trains_data
+      puts ret[1]
+    end
+    
     def routine()
+      self.update_train_data
+
       @trains.each do |train| 
         train.move
       end
@@ -76,8 +90,7 @@ module Yamate
         data[:trains].push(train.get_position)
       end
       
-      puts data.to_json
-      sleep 1
+      sleep 2
       @clients.each do |client|
         client.send(data.to_json)
       end
