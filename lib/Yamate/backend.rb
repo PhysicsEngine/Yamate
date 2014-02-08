@@ -26,10 +26,10 @@ module Yamate
       self.update_train_data
 
       @twitter_api_client = Twitter::REST::Client.new do |config|
-        config.consumer_key        = "qVLD9c7RQUxSR3EqhUCMjQ"
-        config.consumer_secret     = "DBkdwWDWhBcI00bSa2BfLCAWDtCHseKOcOu1Jr39wU"
-        config.access_token        = "82611934-nK9Evp8TQv40jJCqvxojBqWrsLtpAPoQh92F8tcM3"
-        config.access_token_secret = "z2VRMTtsflhRribHeOhCMKaYzUt4VrCjnrIqt3dnGg53l"
+        config.consumer_key        = yamate_config["api_key"]
+        config.consumer_secret     = yamate_config["api_secret"]
+        config.access_token        = yamate_config["access_token"]
+        config.access_token_secret = yamate_config["access_secret"]
       end
 
     end
