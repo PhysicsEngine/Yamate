@@ -7,6 +7,11 @@ require 'yaml'
 module Yamate
 
   class Train
+    @@line_name = {
+      "外回" => "outside_line",
+      "内回" => "inside_line"
+    }
+    
     @@station_rad = {
       "秋葉原" => 0.05,
       "神田"   => 0.3,
@@ -41,11 +46,16 @@ module Yamate
     
     @@radius = 1
     
-    def initialize(id, station_name, progress)
+    def initialize(id, station_name, progress, line_name)
       @id    = id
       @x     = 0
       @y     = 0
-      @theta = @@station_rad[station_name] + progress*0.1
+      @line_name = @@line_name[line_name]
+      if @line_name == "外回" then
+        @theta = @@station_rad[station_name] + progress*0.1
+      else
+        @theta = @@station_rad[station_name] - progress*0.1
+      end
     end
 
     def which_quadrant()
@@ -83,7 +93,7 @@ module Yamate
     end
 
     def get_position()
-      return {:id => @id, :x => @x, :y => @y }
+      return {:id => @id, :x => @x, :y => @y, :line_name => @line_name }
     end
   end
   
@@ -93,11 +103,17 @@ module Yamate
     def initialize(app)
       @app = app
       @clients = []
-      yamate_config = YAML.load_file('./conf/config.yml')
+
+      if File.exists?('./conf/config.yml') then
+        yamate_config = YAML.load_file('./conf/config.yml')
+        @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
+      else
+        @api_client = Yamate::APIClient.new(ENV["CONSUMER_KEY"])
+      end
 
       ## TODO: Random initialization is not accurate for train position
       ##       it should be got API data
-      @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
+      #@api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
       self.update_train_data
     end
 
@@ -114,10 +130,11 @@ module Yamate
       @trains = []
       train_data = self.get_trains
       train_data.each do |train|
+        line_name         = train["odpt:lineName"]
         progress          = train["odpt:progress"]
         train_id          = train["@id"]
         from_station_name = train["odpt:fromStationName"]
-        @trains.push(Train.new(train_id, from_station_name, progress))
+        @trains.push(Train.new(train_id, from_station_name, progress, line_name))
       end
       @trains.each do |train|
         train.update
@@ -132,7 +149,7 @@ module Yamate
       @trains.each do |train|
         data[:trains].push(train.get_position)
       end
-      sleep 2
+      sleep 3
       @clients.each do |client|
         client.send(data.to_json)
       end
