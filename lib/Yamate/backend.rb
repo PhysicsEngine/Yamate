@@ -99,10 +99,15 @@ module Yamate
       @app = app
       @clients = []
       yamate_config = YAML.load_file('./conf/config.yml')
+      if yamate_config["consumer_key"] then
+        @api_client = Yamate::Api.new(yamate_config["consumer_key"])
+      else
+        @api_client = Yamate::Api.new(ENV["CONSUMER_KEY"])
+      end
 
       ## TODO: Random initialization is not accurate for train position
       ##       it should be got API data
-      @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
+      #@api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
       self.update_train_data
     end
 
