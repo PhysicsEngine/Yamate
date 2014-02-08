@@ -41,11 +41,11 @@ module Yamate
     
     @@radius = 1
     
-    def initialize(id, theta)
+    def initialize(id, station_name, progress)
       @id    = id
       @x     = 0
       @y     = 0
-      @theta = theta
+      @theta = @@station_rad[station_name] + progress*0.1
     end
 
     def which_quadrant()
@@ -89,25 +89,16 @@ module Yamate
   
   class Backend
     KEEPALIVE_TIME = 15
-
     
     def initialize(app)
       @app = app
       @clients = []
-      @trains  = []
       yamate_config = YAML.load_file('./conf/config.yml')
 
       ## TODO: Random initialization is not accurate for train position
       ##       it should be got API data
-      rand_theta = Random.new
-
       @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
-      train_num = self.get_train_num
-      
-      for i in 0...train_num do
-        init_theta = rand_theta.rand
-        @trains.push(Train.new(i, init_theta))
-      end
+      self.update_train_data
     end
 
     def get_train_num()
@@ -115,24 +106,32 @@ module Yamate
       return ret.length
     end
 
+    def get_trains()
+      return @api_client.get_trains_data
+    end
+
     def update_train_data()
-      ret = @api_client.get_trains_data
-      puts ret[1]
+      @trains = []
+      train_data = self.get_trains
+      train_data.each do |train|
+        progress          = train["odpt:progress"]
+        train_id          = train["@id"]
+        from_station_name = train["odpt:fromStationName"]
+        @trains.push(Train.new(train_id, from_station_name, progress))
+      end
+      @trains.each do |train|
+        train.update
+      end
     end
     
     def routine()
       self.update_train_data
-
-      @trains.each do |train| 
-        train.move
-      end
 
       data = {}
       data[:trains] = []
       @trains.each do |train|
         data[:trains].push(train.get_position)
       end
-      
       sleep 2
       @clients.each do |client|
         client.send(data.to_json)
