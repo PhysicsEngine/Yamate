@@ -3,6 +3,7 @@ require 'faye/websocket'
 require 'json'
 require 'Yamate'
 require 'yaml'
+require 'twitter'
 
 module Yamate
 
@@ -23,6 +24,14 @@ module Yamate
       end
 
       self.update_train_data
+
+      @twitter_api_client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = "qVLD9c7RQUxSR3EqhUCMjQ"
+        config.consumer_secret     = "DBkdwWDWhBcI00bSa2BfLCAWDtCHseKOcOu1Jr39wU"
+        config.access_token        = "82611934-nK9Evp8TQv40jJCqvxojBqWrsLtpAPoQh92F8tcM3"
+        config.access_token_secret = "z2VRMTtsflhRribHeOhCMKaYzUt4VrCjnrIqt3dnGg53l"
+      end
+
     end
 
     def get_train_num()
@@ -61,7 +70,13 @@ module Yamate
     end
     
     def routine()
+      tweets = []
       if @step % 60 == 0 then
+        @twitter_api_client.search("山手線", :lang => "ja", :result_type => "recent").take(10).collect do |tweet|
+          tweet_data = {:username => tweet.user.screen_name, :tweet => tweet.text}
+          tweets.push(tweet_data)
+        end
+        
         puts "************ UPDATE *************"
         self.update_train_data
         @step = 0
@@ -74,6 +89,7 @@ module Yamate
       # Preparing seding data
       data = {}
       data[:trains] = []
+      data[:tweets] = tweets
       @trains.each do |train|
         data[:trains].push(train.get_position)
       end
