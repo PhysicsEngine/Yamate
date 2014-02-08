@@ -92,7 +92,7 @@ module Yamate
 
     @@radius = 1
     
-    def initialize(id, from_station_name, to_station_name, progress, line_name, is_operation, train_number)
+    def initialize(id, from_station_name, to_station_name, progress, line_name, is_operation, train_number, delay)
       @id    = id
       @x     = 0
       @y     = 0
@@ -100,6 +100,7 @@ module Yamate
       @step  = 0
       @is_operation = is_operation
       @train_number = train_number
+      @delay  = delay
 
       @pre_state = TrainState.new(from_station_name, to_station_name, progress, line_name)
 
@@ -152,7 +153,7 @@ module Yamate
     end
 
     def get_position()
-      return {:id => @id, :x => @x, :y => @y, :line_name => @line_name, :is_operation => @is_operation, :train_number => @train_number }
+      return {:id => @id, :x => @x, :y => @y, :line_name => @line_name, :is_operation => @is_operation, :train_number => @train_number, :delay => @delay }
     end
   end
   

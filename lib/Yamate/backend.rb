@@ -54,7 +54,8 @@ module Yamate
         to_station_name   = train["odpt:toStationName"]
         is_operation      = train["odpt:isInOperation"]
         train_number      = train["odpt:trainNumber"]
-        @trains.push(Yamate::Train.new(train_id, from_station_name, to_station_name, progress, line_name, is_operation, train_number))
+        delay             = train["odpt:delay"]
+        @trains.push(Yamate::Train.new(train_id, from_station_name, to_station_name, progress, line_name, is_operation, train_number, delay))
       end
       @trains.each do |train|
         train.update
