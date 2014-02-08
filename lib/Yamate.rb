@@ -43,6 +43,10 @@ module Yamate
       else
         interval = station_rad[@to_station_name].to_f - station_rad[@from_station_name].to_f
       end
+
+      if interval.abs > 5.0 then
+        interval = 0.0
+      end
       return theta + interval * 0.007
     end
   end
@@ -74,13 +78,13 @@ module Yamate
       "新大久保" => 3.5,
       "高田馬場" => 3.7,
       "目白" => 3.8,
-      "池袋" => 4.00,
-      "大塚" => 4.125,
+      "池袋" => 4.02,
+      "大塚" => 4.15,
       "巣鴨" => 4.36,
       "駒込" => 4.6,
       "田端" => 4.87,
-      "西日暮里" => 5.1,
-      "日暮里" => 5.3,
+      "西日暮里" => 5.13,
+      "日暮里" => 5.33,
       "鶯谷" => 5.63,
       "上野" => 5.83,
       "御徒町" => 6.05
