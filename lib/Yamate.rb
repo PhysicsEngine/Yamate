@@ -113,6 +113,10 @@ module Yamate
       @theta = @@station_rad[from_station_name] + dist
     end
 
+    def self.get_station_names()
+      return @@station_rad.keys
+    end
+
     def estimate()
       @theta = @pre_state.estimate_next_step(@theta, @@station_rad, @step)
       @step += 1
