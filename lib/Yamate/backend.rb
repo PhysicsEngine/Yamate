@@ -92,9 +92,9 @@ module Yamate
           p [:open, ws.object_id]
           @clients << ws
           ws.send({ you: ws.object_id }.to_json)
-          @clients.each do |client|
-            client.send({ count: @clients.size }.to_json)
-          end
+          #@clients.each do |client|
+          #  client.send({ count: @clients.size }.to_json)
+          #end
         end
 
         ws.on :message do |event|
