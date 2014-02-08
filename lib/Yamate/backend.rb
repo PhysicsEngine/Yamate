@@ -7,6 +7,11 @@ require 'yaml'
 module Yamate
 
   class Train
+    @@line_name = {
+      "外回" => "outside_line",
+      "内回" => "inside_line"
+    }
+    
     @@station_rad = {
       "秋葉原" => 0.05,
       "神田"   => 0.3,
@@ -45,7 +50,7 @@ module Yamate
       @id    = id
       @x     = 0
       @y     = 0
-      @line_name = line_name
+      @line_name = @@line_name[line_name]
       if @line_name == "外回" then
         @theta = @@station_rad[station_name] + progress*0.1
       else
