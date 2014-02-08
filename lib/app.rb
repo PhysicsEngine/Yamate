@@ -6,7 +6,7 @@ module Yamate
   class App < Sinatra::Base
 
     use Rack::Auth::Basic, "Protected Area" do |username, password|
-      username == ENV['USERNAME'] && password == ['USER_PASSWORD']
+      username == ENV['USERNAME'] && password == ENV['USER_PASSWORD']
     end
 
     ['/', %r{^/\d+/?$}].each do |path|
