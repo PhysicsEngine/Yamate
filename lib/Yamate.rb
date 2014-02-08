@@ -47,7 +47,7 @@ module Yamate
       if interval.abs > 5.0 then
         interval = 0.0
       end
-      return theta + interval * 0.007
+      return theta + interval * 0.012
     end
   end
 
