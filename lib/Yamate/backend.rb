@@ -41,11 +41,15 @@ module Yamate
     
     @@radius = 1
     
-    def initialize(id, station_name, progress)
+    def initialize(id, station_name, progress, line_name)
       @id    = id
       @x     = 0
       @y     = 0
-      @theta = @@station_rad[station_name] + progress*0.1
+      if line_name == "外回" then
+        @theta = @@station_rad[station_name] + progress*0.1
+      else
+        @theta = @@station_rad[station_name] - progress*0.1
+      end
     end
 
     def which_quadrant()
@@ -114,10 +118,11 @@ module Yamate
       @trains = []
       train_data = self.get_trains
       train_data.each do |train|
+        line_name         = train["odpt:lineName"]
         progress          = train["odpt:progress"]
         train_id          = train["@id"]
         from_station_name = train["odpt:fromStationName"]
-        @trains.push(Train.new(train_id, from_station_name, progress))
+        @trains.push(Train.new(train_id, from_station_name, progress, line_name))
       end
       @trains.each do |train|
         train.update
@@ -132,7 +137,7 @@ module Yamate
       @trains.each do |train|
         data[:trains].push(train.get_position)
       end
-      sleep 2
+      sleep 3
       @clients.each do |client|
         client.send(data.to_json)
       end
