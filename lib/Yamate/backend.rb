@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'faye/websocket'
 require 'json'
 require 'Yamate'
@@ -6,6 +7,38 @@ require 'yaml'
 module Yamate
 
   class Train
+    @@station_rad = {
+      "秋葉原" => 0.05,
+      "神田"   => 0.3,
+      "東京"   => 0.5,
+      "有楽町" => 0.7,
+      "新橋"   => 0.9,
+      "浜松町" => 1.1,
+      "田町"   => 1.32,
+      "品川"   => 1.58,
+      "大崎"   => 1.86,
+      "五反田" => 2.07,
+      "目黒"   => 2.24,
+      "恵比寿" => 2.38,
+      "渋谷"   => 2.55,
+      "原宿"   => 2.75,
+      "代々木" => 3.0,
+      "新宿"   => 3.26,
+      "新大久保" => 3.5,
+      "高田馬場" => 3.7,
+      "目白" => 3.8,
+      "池袋" => 3.99,
+      "大塚" => 4.125,
+      "巣鴨" => 4.36,
+      "駒込" => 4.6,
+      "田端" => 4.87,
+      "西日暮里" => 5.1,
+      "日暮里" => 5.3,
+      "鶯谷" => 5.63,
+      "上野" => 5.83,
+      "御徒町" => 6.05
+    }
+    
     @@radius = 1
     
     def initialize(id, theta)
@@ -62,14 +95,24 @@ module Yamate
       @app = app
       @clients = []
       @trains  = []
-      rand_theta = Random.new()
-      for i in 0..10 do
-        init_theta = rand_theta.rand
-        @trains.push(Train.new(i, init_theta*6.28))
-      end
       yamate_config = YAML.load_file('./conf/config.yml')
-      
+
+      ## TODO: Random initialization is not accurate for train position
+      ##       it should be got API data
+      rand_theta = Random.new
+
       @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
+      train_num = self.get_train_num
+      
+      for i in 0...train_num do
+        init_theta = rand_theta.rand
+        @trains.push(Train.new(i, init_theta))
+      end
+    end
+
+    def get_train_num()
+      ret = @api_client.get_trains_data
+      return ret.length
     end
 
     def update_train_data()
