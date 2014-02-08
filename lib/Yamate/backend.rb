@@ -45,7 +45,8 @@ module Yamate
       @id    = id
       @x     = 0
       @y     = 0
-      if line_name == "外回" then
+      @line_name = line_name
+      if @line_name == "外回" then
         @theta = @@station_rad[station_name] + progress*0.1
       else
         @theta = @@station_rad[station_name] - progress*0.1
@@ -87,7 +88,7 @@ module Yamate
     end
 
     def get_position()
-      return {:id => @id, :x => @x, :y => @y }
+      return {:id => @id, :x => @x, :y => @y, :line_name => @line_name }
     end
   end
   
