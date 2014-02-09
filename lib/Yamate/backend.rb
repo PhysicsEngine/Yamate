@@ -19,17 +19,28 @@ module Yamate
       if File.exists?('./conf/config.yml') then
         yamate_config = YAML.load_file('./conf/config.yml')
         @api_client = Yamate::APIClient.new(yamate_config["consumer_key"])
+
+        # For twitter search api
+        api_key       = yamate_config["api_key"]
+        api_secret    = yamate_config["api_secret"]
+        access_token  = yamate_config["access_token"]
+        access_secret = yamate_config["access_secret"]
+        
       else
         @api_client = Yamate::APIClient.new(ENV["CONSUMER_KEY"])
+        api_key       = ENV["API_KEY"]
+        api_secret    = ENV["API_SECRET"]
+        access_token  = ENV["ACCESS_TOKEN"]
+        access_secret = ENV["ACCESS_SECRET"]
       end
 
       self.update_train_data
 
       @twitter_api_client = Twitter::REST::Client.new do |config|
-        config.consumer_key        = yamate_config["api_key"]
-        config.consumer_secret     = yamate_config["api_secret"]
-        config.access_token        = yamate_config["access_token"]
-        config.access_token_secret = yamate_config["access_secret"]
+        config.consumer_key        = api_key
+        config.consumer_secret     = api_secret
+        config.access_token        = access_token
+        config.access_token_secret = access_secret
       end
 
     end
