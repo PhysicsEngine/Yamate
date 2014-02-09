@@ -28,10 +28,10 @@ module Yamate
         
       else
         @api_client = Yamate::APIClient.new(ENV["CONSUMER_KEY"])
-        api_key       = ENV["API_KEY"]
-        api_secret    = ENV["API_SECRET"]
-        access_token  = ENV["ACCESS_TOKEN"]
-        access_secret = ENV["ACCESS_SECRET"]
+        api_key       = ENV["TWITTER_API_KEY"]
+        api_secret    = ENV["TWITTER_API_SECRET"]
+        access_token  = ENV["TWITTER_ACCESS_TOKEN"]
+        access_secret = ENV["TWITTER_ACCESS_SECRET"]
       end
 
       self.update_train_data
