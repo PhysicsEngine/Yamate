@@ -1162,10 +1162,17 @@ ul.tweet-view-list-right {
 	margin-left: 10%;
 	background-color: white;
 	padding-right: 10%;
+	visibility: hidden;
 }
 
 .tweet-view-item-right {
 	margin-right: 10%;
 	background-color: white;
 	padding-right: 10%;
+	visibility: hidden;
+}
+
+blockquote {
+	color: white;
+	font-size: small;
 }
