@@ -1145,3 +1145,34 @@
 		border-top: solid 1px #d2d7dc;
 		color: #a2a7ac;
 	}
+
+/*********************************************************************************/
+/* Tweet view                                                                    */
+/*********************************************************************************/
+
+ul.tweet-view-list-left {
+	float: left;
+}
+
+ul.tweet-view-list-right {
+	float: right;
+}
+
+.tweet-view-item-left {
+	margin-left: 10%;
+	background-color: white;
+	padding-right: 10%;
+	visibility: hidden;
+}
+
+.tweet-view-item-right {
+	margin-right: 10%;
+	background-color: white;
+	padding-right: 10%;
+	visibility: hidden;
+}
+
+blockquote {
+	color: white;
+	font-size: small;
+}

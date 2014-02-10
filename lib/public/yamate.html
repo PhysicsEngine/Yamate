@@ -15,6 +15,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600" rel="stylesheet" type="text/css" />
 	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 	<link rel="stylesheet" href="css/enchant.css" />
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.1/pure-min.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.dropotron.min.js"></script>
 	<script src="js/skel.min.js"></script>
@@ -61,52 +62,136 @@
 		  </ul>
 		</nav>
 	  </div>
-
-	  <!-- Hero -->
-	  <section id="hero" class="container">
-            <div class="subway-map" data-columns="17" data-rows="17" data-cellSize="40" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="true" data-lineWidth="8">
-                <ul data-color="#00ff00" data-label="Yamate">
-                    <li data-coords="2.5,1"  data-marker="interchange">池袋</li>
-                    <li data-coords="4,1">大塚</li>
-                    <li data-coords="6,1">巣鴨</li>
-                    <li data-coords="8,1">駒込</li>
-                    <li data-coords="10,1">田端</li>
-                    <li data-coords="12,1">西日暮里</li>
-                    <li data-coords="14,1">日暮里</li>
-                    <li data-coords="15,1"></li>
-                    <li data-coords="16,2" data-dir="E"></li>
-                    <li data-coords="16,3">鶯谷</li>
-                    <li data-coords="16,5" data-marker="interchange">上野</li>
-                    <li data-coords="16,7">御徒町</li>
-                    <li data-coords="16,9">秋葉原</li>
-                    <li data-coords="16,11">神田</li>
-                    <li data-coords="16,13" data-marker="interchange">東京</li>
-                    <li data-coords="16,15">有楽町</li>
-                    <li data-coords="15,16" data-dir="S"></li>
-                    <li data-coords="14,16">新橋</li>
-                    <li data-coords="12,16">浜松町</li>
-                    <li data-coords="10,16">田町</li>
-                    <li data-coords="8,16">品川</li>
-                    <li data-coords="6,16">大崎</li>
-                    <li data-coords="4,16">五反田</li>
-                    <li data-coords="2,16">目黒</li>
-                    <li data-coords="1,15" data-dir="W">恵比寿</li>
-                    <li data-coords="1,13" data-marker="interchange">渋谷</li>
-                    <li data-coords="1,11">原宿</li>
-                    <li data-coords="1,9" data-dir="W">代々木</li>
-                    <li data-coords="1,7" data-marker="interchange">新宿</li>
-                    <li data-coords="1,5">新大久保</li>
-                    <li data-coords="1,3">高田馬場</li>
-                    <li data-coords="1,2">目白</li>
-                    <li data-coords="2,1" data-dir="N"></li>
-                    <li data-coords="2.5,1"></li>
-                </ul>
-            </div>
-        <div id="enchant-canvas">
-            <div id="enchant-stage"></div>
-        </div>
-	  </section>
 	  
+	  <div class="pure-g">
+		<div class="pure-u-1-4">
+		  <ul class="tweet-view-list-left">
+			<li>
+			  <div class="pure-u-1 tweet-view-item-left">
+				<blockquote id="tweet-left1">
+				  今日の晩御飯は納豆ですっっっっっっっっっっっっっっｋ
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-left">
+				<blockquote id="tweet-left2">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-left">
+				<blockquote id="tweet-left3">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-left">
+				<blockquote id="tweet-left4">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-left">
+				<blockquote id="tweet-left5">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+		  </ul>
+		</div>
+		
+		
+
+		<div class="pure-u-1-2">
+		  <!-- Hero -->
+		  <section id="hero" class="container">
+            <div class="subway-map" data-columns="17" data-rows="17" data-cellSize="40" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="true" data-lineWidth="8">
+              <ul data-color="#00ff00" data-label="Yamate">
+                <li data-coords="2.5,1"  data-marker="interchange">池袋</li>
+                <li data-coords="4,1">大塚</li>
+                <li data-coords="6,1">巣鴨</li>
+                <li data-coords="8,1">駒込</li>
+                <li data-coords="10,1">田端</li>
+                <li data-coords="12,1">西日暮里</li>
+                <li data-coords="14,1">日暮里</li>
+                <li data-coords="15,1"></li>
+                <li data-coords="16,2" data-dir="E"></li>
+                <li data-coords="16,3">鶯谷</li>
+                <li data-coords="16,5" data-marker="interchange">上野</li>
+                <li data-coords="16,7">御徒町</li>
+                <li data-coords="16,9">秋葉原</li>
+                <li data-coords="16,11">神田</li>
+                <li data-coords="16,13" data-marker="interchange">東京</li>
+                <li data-coords="16,15">有楽町</li>
+                <li data-coords="15,16" data-dir="S"></li>
+                <li data-coords="14,16">新橋</li>
+                <li data-coords="12,16">浜松町</li>
+                <li data-coords="10,16">田町</li>
+                <li data-coords="8,16">品川</li>
+                <li data-coords="6,16">大崎</li>
+                <li data-coords="4,16">五反田</li>
+                <li data-coords="2,16">目黒</li>
+                <li data-coords="1,15" data-dir="W">恵比寿</li>
+                <li data-coords="1,13" data-marker="interchange">渋谷</li>
+                <li data-coords="1,11">原宿</li>
+                <li data-coords="1,9" data-dir="W">代々木</li>
+                <li data-coords="1,7" data-marker="interchange">新宿</li>
+                <li data-coords="1,5">新大久保</li>
+                <li data-coords="1,3">高田馬場</li>
+                <li data-coords="1,2">目白</li>
+                <li data-coords="2,1" data-dir="N"></li>
+                <li data-coords="2.5,1"></li>
+              </ul>
+            </div>
+			<div id="enchant-canvas">
+              <div id="enchant-stage"></div>
+			</div>
+		  </section>
+		</div>
+	  
+		<div class="pure-u-1-4">
+		  <ul class="tweet-view-list-right">
+			<li>
+			  <div class="pure-u-1 tweet-view-item-right">
+				<blockquote id="tweet-right1">
+				  今日の晩御飯は納豆ですっっっっっっっっっっっっっっｋ
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-right">
+				<blockquote id="tweet-right2">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-right">
+				<blockquote id="tweet-right3">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-right">
+				<blockquote id="tweet-right4">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+			<li>
+			  <div class="pure-u-4-5 tweet-view-item-right">
+				<blockquote id="tweet-right5">
+				  今日の晩御飯は納豆です
+				</blockquote>
+			  </div>
+			</li>
+		  </ul>
+		</div>
 	</div>
 	
 	<!-- Copyright -->
