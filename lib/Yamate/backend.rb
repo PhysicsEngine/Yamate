@@ -83,7 +83,7 @@ module Yamate
     
     def routine()
       tweets = []
-      if @step % 60 == 0 then
+      if @step % 120 == 0 then
         @twitter_api_client.search("山手線", :lang => "ja", :result_type => "recent").take(400).collect do |tweet|
           Train.get_station_names.each do |station_name|
             if tweet.text.include?(station_name) then
