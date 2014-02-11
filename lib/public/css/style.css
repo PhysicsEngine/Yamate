@@ -1176,3 +1176,8 @@ blockquote {
 	color: white;
 	font-size: small;
 }
+
+#indicator {
+	position: relative;
+	z-index: 100;
+}

@@ -84,14 +84,19 @@ module Yamate
     def routine()
       tweets = []
       if @step % 120 == 0 then
-        @twitter_api_client.search("山手線", :lang => "ja", :result_type => "recent").take(400).collect do |tweet|
-          Train.get_station_names.each do |station_name|
-            if tweet.text.include?(station_name) then
-              tweet_data = {:username => tweet.user.screen_name, :tweet => tweet.text, :station_name => station_name}
-              tweets.push(tweet_data)
+        begin
+          @twitter_api_client.search("山手線", :lang => "ja", :result_type => "recent").take(400).collect do |tweet|
+            Train.get_station_names.each do |station_name|
+              if tweet.text.include?(station_name) then
+                tweet_data = {:username => tweet.user.screen_name, :tweet => tweet.text, :station_name => station_name}
+                tweets.push(tweet_data)
+              end
             end
           end
+        rescue Error => e
+          puts e
         end
+          
         
         puts "************ UPDATE *************"
         self.update_train_data

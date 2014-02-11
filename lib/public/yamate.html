@@ -23,6 +23,7 @@
 	<script src="js/init.js"></script>
 	<script src="js/enchant.min.js"></script>
 	<script src="js/jquery.subwayMap-0.5.0.js"></script>
+	<script src="js/jquery.activity-indicator-1.0.0.js"></script>
 	<noscript>
 	  <link rel="stylesheet" href="css/skel-noscript.css" />
 	  <link rel="stylesheet" href="css/style.css" />
@@ -104,12 +105,13 @@
 		  </ul>
 		</div>
 		
-		
-
 		<div class="pure-u-1-2">
 		  <!-- Hero -->
-		  <section id="hero" class="container">
+		  <section id="hero" class="container" style="position:relative;">
+			<div id="indicator">
+			</div>
             <div class="subway-map" data-columns="17" data-rows="17" data-cellSize="40" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="true" data-lineWidth="8">
+			    
               <ul data-color="#00ff00" data-label="Yamate">
                 <li data-coords="2.5,1"  data-marker="interchange">池袋</li>
                 <li data-coords="4,1">大塚</li>
@@ -147,6 +149,7 @@
                 <li data-coords="2.5,1"></li>
               </ul>
             </div>
+			
 			<div id="enchant-canvas">
               <div id="enchant-stage"></div>
 			</div>
