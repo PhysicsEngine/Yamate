@@ -110,7 +110,7 @@ module Yamate
         dist = (@@station_rad[to_station_name].to_f - @@station_rad[from_station_name].to_f) * progress
       end
       
-      @theta = @@station_rad[from_station_name] + dist
+      @theta = @@station_rad[from_station_name].to_f + dist
     end
 
     def self.get_station_names()
