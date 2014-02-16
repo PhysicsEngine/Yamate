@@ -17,3 +17,50 @@
   width: 50px;
   text-align: right;
 }
+
+.subway-map
+{
+    margin: 0;
+    width: 680px;
+    height:680px;
+    /* background-color: white; */
+    position: absolute;
+}
+
+.subway-map span
+{
+    margin: 5px 5px 5px 0;
+}
+
+/** css優先順位の高い書き方 */
+#hero div.subway-map a {
+    color: black;
+    border-bottom: inherit;
+}
+
+div.modal {
+    color: black;
+
+    width: 600px;
+    padding: 30px;
+    display:none;
+
+    background: #FFF;
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7); -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+
+}
+
+.modal_close { border-bottom: inherit; position: absolute; top: 12px; right: 12px; display: block; width: 14px; height: 14px; background: url(../images/modal_close.png); z-index: 2; }
+
+/** modal window background */
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
