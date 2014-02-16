@@ -94,7 +94,6 @@ module Yamate
           end
         end
       end
-      
     end
 
     def estimate_train_data()
@@ -102,7 +101,6 @@ module Yamate
         train.estimate
         train.update
       end
-
     end
     
     def routine()
@@ -117,7 +115,7 @@ module Yamate
               end
             end
           end
-        rescue Error => e
+        rescue Exception => e
           puts e
         end
         

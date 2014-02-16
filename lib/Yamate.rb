@@ -68,7 +68,7 @@ module Yamate
       if interval.abs > 5.0 then
         interval = 0.0
       end
-      return theta + interval * update_time_interval
+      return theta + interval * update_time_interval, is_arrived_at_station(theta)
     end
   end
 
@@ -122,6 +122,7 @@ module Yamate
       @is_operation = is_operation
       @train_number = train_number
       @delay  = delay
+      @is_stop = false
 
       @pre_state = TrainState.new(from_station_name, to_station_name, progress, line_name)
 
@@ -143,7 +144,7 @@ module Yamate
     end
 
     def estimate()
-      @theta = @pre_state.estimate_next_step(@theta, @@station_rad, @step)
+      @theta, @is_stop = @pre_state.estimate_next_step(@theta, @@station_rad, @step)
       @step += 1
     end
 
@@ -182,7 +183,7 @@ module Yamate
     end
 
     def get_position()
-      return {:id => @id, :x => @x, :y => @y, :line_name => @line_name, :is_operation => @is_operation, :train_number => @train_number, :delay => @delay }
+      return {:id => @id, :x => @x, :y => @y, :line_name => @line_name, :is_operation => @is_operation, :train_number => @train_number, :delay => @delay, :is_stop => @is_stop }
     end
   end
   
