@@ -54,7 +54,18 @@ module Yamate
       return @api_client.get_trains_data
     end
 
+    def get_train_infos_num()
+      ret = @api_client.get_train_info
+      return ret.length
+    end
+
+    def get_train_infos()
+      return @api_client.get_train_info
+    end
+
     def update_train_data()
+
+      ## Update train positions
       @trains = []
       train_data = self.get_trains
       train_data.each do |train|
@@ -71,6 +82,19 @@ module Yamate
       @trains.each do |train|
         train.update
       end
+
+      ## Update train delay informations
+      @train_infos = []
+      train_infos = self.get_train_infos
+      train_infos.each do |train_info|
+        Train.get_station_names.each do |station_name|
+          if train_info["odpt:trainInfoText"].include?(station_name) then
+            info = {:station_name => station_name, :text => train_info["odpt:trainInfoText"]}
+            @train_infos.push(info)
+          end
+        end
+      end
+      
     end
 
     def estimate_train_data()
@@ -107,10 +131,11 @@ module Yamate
       end
       @step += 1
 
-      # Preparing seding data
+      # Preparing sending data
       data = {}
       data[:trains] = []
       data[:tweets] = tweets
+      data[:infos]  = @train_infos
       @trains.each do |train|
         data[:trains].push(train.get_position)
       end
