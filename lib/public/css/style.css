@@ -942,7 +942,7 @@
 		background-image: url('images/header.svg'), -webkit-linear-gradient(75deg, #008000 15%, #99CC00 55%);
 		background-image: url('images/header.svg'), -o-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
 		background-image: url('images/header.svg'), -ms-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
-		background-image: url('images/header.svg'), linear-gradient(75deg, #008000 15%, #99CC00 55%);
+		background-image: url('images/header.svg'), linear-gradient(75deg, #316745 15%, #007b43 55%);
 	}
 	
 		#header-wrapper:before
