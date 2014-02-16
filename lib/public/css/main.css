@@ -30,6 +30,7 @@
 .subway-map span
 {
     margin: 5px 5px 5px 0;
+    line-height:8px;
 }
 
 /** css優先順位の高い書き方 */
@@ -40,7 +41,6 @@
 
 div.modal {
     color: black;
-
     width: 600px;
     padding: 30px;
     display:none;
