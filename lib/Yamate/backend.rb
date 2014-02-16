@@ -77,6 +77,7 @@ module Yamate
         is_operation      = train["odpt:isInOperation"]
         train_number      = train["odpt:trainNumber"]
         delay             = train["odpt:delay"]
+        @dc_date           = train["dc:date"]
         @trains.push(Yamate::Train.new(train_id, from_station_name, to_station_name, progress, line_name, is_operation, train_number, delay))
       end
       @trains.each do |train|
@@ -133,6 +134,8 @@ module Yamate
       data[:trains] = []
       data[:tweets] = tweets
       data[:infos]  = @train_infos
+      const = {}
+      data[:const]   = {:date => @dc_date}
       @trains.each do |train|
         data[:trains].push(train.get_position)
       end
