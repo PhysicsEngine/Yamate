@@ -64,3 +64,9 @@ div.modal {
     background: #000;
     display: none;
 }
+
+#date_info {
+    float:right;
+    margin-right:20%;
+    color: white;
+}
