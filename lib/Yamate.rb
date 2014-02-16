@@ -50,7 +50,6 @@ module Yamate
       station_thetas.each do |station_theta|
         distance = Yamate.theta_distance(station_theta, theta)
         if distance < 0.001 then
-          puts "ARRIVED #{distance}"
           return true
         end
       end
