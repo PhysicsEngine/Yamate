@@ -24,6 +24,11 @@ module Yamate
       response = @conn.get '/api/v2/datapoints', {"rdf:type" => "odpt:Train", "acl:accessTarget" => "JR-East:YamanoteLine", "acl:consumerKey" => @consumer_key}
       return JSON.parse(response.body)
     end
+
+    def get_train_info()
+      response = @conn.get '/api/v2/datapoints', {"rdf:type" => "odpt:TrainInfo", "acl:accessTarget" => "JR-East", "acl:consumerKey" => @consumer_key}
+      return JSON.parse(response.body)
+    end
   end
 
   class TrainState
