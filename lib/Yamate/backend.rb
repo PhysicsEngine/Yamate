@@ -120,7 +120,6 @@ module Yamate
         rescue Error => e
           puts e
         end
-          
         
         puts "************ UPDATE *************"
         self.update_train_data
